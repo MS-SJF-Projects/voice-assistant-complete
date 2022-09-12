@@ -8,11 +8,13 @@ To get started, view the prerequisites below, then see the intro module [here](m
 
 Full list of all sections / modules:
 
-- [⚒️ Intro](modules/00_intro/README.md)
+- [Intro](modules/00_intro/README.md)
+- [Speech to text](modules/01_speech_to_text/README.md)
+- [Text to speech](modules/02_text_to_speech/README.md)
 
 Advanced sections:
 
-- [🌐 Pull request](modules/10_pull_request_pipeline/README.md)
+- [Pull request](modules/10_pull_request_pipeline/README.md)
   
 ## Prerequisites
 
