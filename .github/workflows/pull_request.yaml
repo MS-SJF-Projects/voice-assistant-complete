@@ -1,0 +1,36 @@
+
+name: Pull request
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        folder: [01_speech_to_text, 02_templating]
+        include:
+            - folder: 01_speech_to_text
+              no_tests: true
+    container:
+      image: mcr.microsoft.com/vscode/devcontainers/python:0-3.10-bullseye
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: | 
+          cd modules/${{ matrix.folder }}
+          pip install -r requirements.txt
+
+      - name: Lint python
+        run: |
+          cd modules/
+          pylint --disable=C,R0801 ./${{ matrix.folder }}
+      
+      - if: ${{ matrix.no_tests  == false }}
+        name: Run tests
+        run: | 
+          cd modules/${{ matrix.folder }}
+          pytest 
