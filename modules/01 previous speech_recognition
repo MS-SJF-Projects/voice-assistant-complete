@@ -3,15 +3,15 @@ from azure.core.credentials import AzureKeyCredential
 from azure.ai.language.conversations import ConversationAnalysisClient
 
 # Replace the None values in the following variables according to README.md
-speech_key = '0bd1085c61894457ae7eeced74f1ae9f'
-language_key = '10059fe01a184784b00605bcc8db031e'
+speech_key = None
+language_key = None
 language_region = 'westeurope'
-language_endpoint = 'https://sjf22-language-gregghy.cognitiveservices.azure.com/'
-language_project = 'FlightBooking.json'
-deployment_name = 'Deployment01'
+language_endpoint = None
+language_project = 'sjf22-clu'
+deployment_name = 'Testing'
 
 # global services
-speech_config = speechsdk.SpeechConfig(subscription="0bd1085c61894457ae7eeced74f1ae9f", region="westeurope")
+speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=language_region)
 speech_config.speech_recognition_language="en-US"
 
 client = ConversationAnalysisClient(language_endpoint, AzureKeyCredential(language_key))
@@ -115,3 +115,4 @@ if text is not None:
         speak("You wanna know the weather?")
     elif intent == "Cancel":
         speak("Ok, bye.")
+
